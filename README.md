@@ -1,7 +1,12 @@
 # zen.typ
 
 A beautifully handcrafted Typst template forked from
-[dvdtyp](https://typst.app/universe/package/dvdtyp/).
+[dvdtyp](https://typst.app/universe/package/dvdtyp/), for the stubborn martian
+hacker.
+
+> It is a tale as old as time. A melodramatic, LaTeX dwelling mathematician,
+> envious of the features of modern word processors, spirals into despair
+> before succumbing to the [dark side](typst.app/). This is his template.
 
 It's been adjusted to be a little more sophisticated (in my eyes) and polished.
 Inspiration and general conventions were taken from Evan Chen's
