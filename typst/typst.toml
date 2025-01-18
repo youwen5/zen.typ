@@ -4,4 +4,4 @@ version = "0.1.0"
 entrypoint = "zen.typ"
 authors = ["Youwen Wu"]
 license = "MIT"
-description = "Youwen's custom Typst package, forked from dvd.typ"
+description = "Youwen's blingfully boxed Typst template"

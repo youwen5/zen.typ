@@ -23,7 +23,7 @@
   rgb("#9E9E9E"),
 )
 
-#let dvdtyp(
+#let zen(
   title: "",
   subtitle: "",
   author: "",
