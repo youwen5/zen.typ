@@ -1,8 +1,7 @@
 # zen.typ
 
 A beautifully handcrafted Typst template forked from
-[dvdtyp](https://typst.app/universe/package/dvdtyp/), for the stubborn martian
-hacker.
+[dvdtyp](https://typst.app/universe/package/dvdtyp/), for the stubborn enlightened mathematician.
 
 > It is a tale as old as time. A melodramatic, LaTeX dwelling mathematician,
 > envious of the features of modern word processors, spirals into despair
