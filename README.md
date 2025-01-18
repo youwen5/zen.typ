@@ -90,3 +90,11 @@ you need to copy it into your Typst package cache manually (on Linux it is
 Alternatively, a home-manager module is provided for NixOS users to
 automatically install the template to be discoverable by Typst, under
 `@youwen/zen` (e.g. you can use `import "@youwen/zen:0.1.0 : *`).
+
+Add `zenTyp` to your inputs, then import `inputs.zenTyp.homeManagerModules.default` into your home-manager configuration, then set
+
+```nix
+zenTyp.enable = true;
+```
+
+Then the package will be available on the machine.
