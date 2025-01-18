@@ -7,6 +7,8 @@ It's been adjusted to be a little more sophisticated (in my eyes) and polished.
 Inspiration and general conventions were taken from Evan Chen's
 [evan.sty](https://github.com/vEnhance/dotfiles/blob/main/texmf/tex/latex/evan/evan.sty).
 
+![image](https://github.com/user-attachments/assets/2d175d3f-3cb5-4fa8-a0f7-92634c6ed246)
+
 ## Conventions
 
 This template provides the following functions, which function similarly to the
