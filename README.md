@@ -6,7 +6,7 @@ hacker.
 
 > It is a tale as old as time. A melodramatic, LaTeX dwelling mathematician,
 > envious of the features of modern word processors, spirals into despair
-> before succumbing to the [dark side](typst.app/). This is his template.
+> before succumbing to the [dark side](https://typst.app/). This is his template.
 
 It's been adjusted to be a little more sophisticated (in my eyes) and polished.
 Inspiration and general conventions were taken from Evan Chen's
