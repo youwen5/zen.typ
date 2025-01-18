@@ -1,0 +1,7 @@
+[package]
+name = "zen"
+version = "0.1.0"
+entrypoint = "zen.typ"
+authors = ["Youwen Wu"]
+license = "MIT"
+description = "Youwen's custom Typst package, forked from dvd.typ"
