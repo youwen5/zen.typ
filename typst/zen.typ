@@ -129,7 +129,7 @@
   set par(
     justify: true,
     spacing: 0.65em,
-    first-line-indent: 2em,
+    first-line-indent: 1em,
   )
 
   body
