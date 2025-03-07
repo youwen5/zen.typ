@@ -42,18 +42,17 @@
   set page(
     numbering: "1",
     number-align: center,
-    header: locate(loc => {
-      if loc.page() == 1 {
-        return
+    header: context {
+      if counter(page).get().first() > 1 {
+        box(stroke: (bottom: 0.7pt), inset: 0.4em)[#text(
+            font: "New Computer Modern",
+          )[
+            *#author* --- #datetime.today().display("[day] [month repr:long] [year]")
+            #h(1fr)
+            *#title*
+          ]]
       }
-      box(stroke: (bottom: 0.7pt), inset: 0.4em)[#text(
-          font: "New Computer Modern",
-        )[
-          *#author* --- #datetime.today().display("[day] [month repr:long] [year]")
-          #h(1fr)
-          *#title*
-        ]]
-    }),
+    },
     paper: paper-size,
     // The margins depend on the paper size.
     margin: (
@@ -111,16 +110,16 @@
     #v(1em)
   ]
 
-  set outline(fill: repeat[~.], indent: 1em)
+  // set outline(fill: repeat[~.], indent: 1em)
 
   show outline: set heading(numbering: none)
   show outline: set par(first-line-indent: 0em)
+  set outline(depth: 2)
 
   show outline.entry.where(level: 1): it => {
     text(font: "Libertinus Serif", rgb("#2196F3"))[#strong[#it]]
   }
   show outline.entry: it => {
-    h(1em)
     text(font: "Libertinus Serif", rgb("#2196F3"))[#it]
   }
 
@@ -161,7 +160,7 @@
   }
   t = a.join()
 
-  return text(font: "New Computer Modern", fill: color)[#t]
+  text(font: "New Computer Modern", fill: color)[#t]
 }
 
 #let thmbase(

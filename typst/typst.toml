@@ -1,7 +1,7 @@
 [package]
 name = "zen"
-version = "0.1.0"
+version = "0.2.0"
 entrypoint = "zen.typ"
 authors = ["Youwen Wu"]
 license = "MIT"
-description = "Youwen's blingfully boxed Typst template"
+description = "Blingful Typst template with swag"
