@@ -13,7 +13,7 @@
           options.zenTyp.enable = lib.mkEnableOption "zen.typ Typst template";
 
           config = lib.mkIf cfg.enable {
-            home.file.".cache/typst/packages/youwen/zen/0.1.0" = {
+            home.file.".cache/typst/packages/youwen/zen/0.2.0" = {
               recursive = true;
               source = ./typst;
             };
