@@ -23,6 +23,12 @@
   rgb("#9E9E9E"),
 )
 
+#let fonts = (
+  sans: "Liberation Sans",
+  mono: "CaskaydiaCove Nerd Font",
+  serif: "New Computer Modern",
+)
+
 #let zen(
   title: "",
   subtitle: "",
@@ -31,6 +37,8 @@
   bibliography: none,
   paper-size: "a4",
   date: "today",
+  big-headings: false,
+  outline-separate-page: false,
   body,
 ) = {
   set document(title: title, author: author)
@@ -44,12 +52,11 @@
     number-align: center,
     header: context {
       if counter(page).get().first() > 1 {
-        box(stroke: (bottom: 0.7pt), inset: 0.4em)[#text(
-            font: "New Computer Modern",
-          )[
+        box(stroke: (bottom: 0.7pt))[#text(font: fonts.serif)[
             *#author* --- #datetime.today().display("[day] [month repr:long] [year]")
             #h(1fr)
             *#title*
+            #v(0.4em)
           ]]
       }
     },
@@ -62,9 +69,9 @@
   )
 
 
-  set heading(numbering: "1.")
+  set heading(numbering: (..nums) => nums.pos().map(str).join(".") + " ")
   show heading: it => {
-    set text(font: "Libertinus Serif")
+    set text(font: fonts.sans)
 
     block[
       #if it.numbering != none {
@@ -77,18 +84,17 @@
     ]
   }
 
-  set text(font: "New Computer Modern", lang: "en")
+  set text(font: fonts.serif, lang: "en")
 
   show math.equation: set text(weight: 400)
 
 
   // Title row.
   align(center)[
-    #set text(font: "Libertinus Serif")
-    #block(text(weight: 700, 26pt, title))
+    #block(text(weight: 700, font: fonts.sans, 26pt, title))
 
 
-    #if subtitle != none [#text(12pt, weight: 500)[#(
+    #if subtitle != none [#text(12pt, weight: 500, font: fonts.sans)[#(
           subtitle
         )]]
 
@@ -104,23 +110,27 @@
   ]
 
   if abstract != none [
-    #v(2.2em)
-    #set text(font: "Libertinus Serif")
+    #v(1.8em)
+    #set text(font: fonts.serif)
     #pad(x: 14%, abstract)
     #v(1em)
   ]
-
-  // set outline(fill: repeat[~.], indent: 1em)
 
   show outline: set heading(numbering: none)
   show outline: set par(first-line-indent: 0em)
   set outline(depth: 2)
 
   show outline.entry.where(level: 1): it => {
-    text(font: "Libertinus Serif", rgb("#2196F3"))[#strong[#it]]
+    text(font: fonts.sans, weight: 600, rgb("#2196F3"), it)
   }
   show outline.entry: it => {
-    text(font: "Libertinus Serif", rgb("#2196F3"))[#it]
+    text(font: fonts.serif, rgb("#2196F3"), it)
+  }
+  show outline: it => {
+    it
+    if outline-separate-page {
+      pagebreak()
+    }
   }
 
 
@@ -144,13 +154,13 @@
 
 #let thmtitle(t, color: rgb("#000000")) = {
   return text(
-    font: "Libertinus Serif",
+    font: fonts.sans,
     weight: "semibold",
     fill: color,
   )[#t]
 }
 #let thmname(t, color: rgb("#000000")) = {
-  return text(font: "Libertinus Serif", fill: color)[(#t)]
+  return text(font: fonts.sans, fill: color)[(#t)]
 }
 
 #let thmtext(t, color: rgb("#000000")) = {
@@ -160,7 +170,7 @@
   }
   t = a.join()
 
-  text(font: "New Computer Modern", fill: color)[#t]
+  text(font: fonts.serif, fill: color)[#t]
 }
 
 #let thmbase(
