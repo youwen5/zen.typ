@@ -281,7 +281,7 @@
 )
 
 #let example-style = builder-thmbox(
-  color: colors.at(17),
+  color: colors.at(2),
   shadow: (offset: (x: 3pt, y: 3pt), color: luma(70%)),
 )
 
