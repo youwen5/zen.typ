@@ -17,6 +17,10 @@
               recursive = true;
               source = ./typst;
             };
+            home.file.".cache/typst/packages/youwen/zen/0.2.0" = {
+              recursive = true;
+              source = ./typst;
+            };
           };
         };
     };
