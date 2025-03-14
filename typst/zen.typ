@@ -69,7 +69,7 @@
   )
 
 
-  set heading(numbering: (..nums) => nums.pos().map(str).join(".") + " ")
+  set heading(numbering: "1.1")
   show heading: it => {
     set text(font: fonts.sans)
 
@@ -98,6 +98,7 @@
           subtitle
         )]]
 
+    #v(0.8em)
     #if author != none [#text(16pt)[#smallcaps(author)]]
     #v(1.2em, weak: true)
 
@@ -121,7 +122,7 @@
   set outline(depth: 2)
 
   show outline.entry.where(level: 1): it => {
-    text(font: fonts.sans, weight: 600, rgb("#2196F3"), it)
+    text(font: fonts.serif, weight: 600, rgb("#2196F3"), it)
   }
   show outline.entry: it => {
     text(font: fonts.serif, rgb("#2196F3"), it)
@@ -154,13 +155,13 @@
 
 #let thmtitle(t, color: rgb("#000000")) = {
   return text(
-    font: fonts.sans,
+    font: fonts.serif,
     weight: "semibold",
     fill: color,
   )[#t]
 }
 #let thmname(t, color: rgb("#000000")) = {
-  return text(font: fonts.sans, fill: color)[(#t)]
+  return text(font: fonts.serif, fill: color)[(#t)]
 }
 
 #let thmtext(t, color: rgb("#000000")) = {
@@ -182,7 +183,7 @@
   namefmt: x => [(#x)],
   titlefmt: strong,
   bodyfmt: x => x,
-  separator: [. \ ],
+  separator: none,
   base: "heading",
   base_level: none,
 ) = {
@@ -357,3 +358,30 @@
   padding: (bottom: 0.5em, top: 0.5em),
 )
 
+#let solution = (..args) => showybox(
+  title-style: (
+    weight: "semibold",
+    color: colors.at(0).darken(40%),
+    sep-thickness: 0pt,
+  ),
+  frame: (
+    title-color: colors.at(0).lighten(80%),
+    border-color: colors.at(0).darken(40%),
+    thickness: (left: 1.5pt),
+    radius: 0pt,
+  ),
+  title: (
+    () => {
+      if (args.pos().len() > 1) {
+        return [Solution#text(weight: "medium",[ (#args.at(0))])]
+      }
+      "Solution"
+    }
+  )(),
+)[
+  #if args.pos().len() > 1 {
+    args.at(1)
+  } else {
+    args.at(0)
+  }
+]
