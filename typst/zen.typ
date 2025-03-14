@@ -39,6 +39,8 @@
   date: "today",
   big-headings: false,
   outline-separate-page: false,
+  date-in-header: true,
+  title-in-header: true,
   body,
 ) = {
   set document(title: title, author: author)
@@ -53,9 +55,14 @@
     header: context {
       if counter(page).get().first() > 1 {
         box(stroke: (bottom: 0.7pt))[#text(font: fonts.serif)[
-            *#author* --- #datetime.today().display("[day] [month repr:long] [year]")
+            *#author*
+            #if date-in-header [
+              --- #datetime.today().display("[day] [month repr:long] [year]")
+            ]
             #h(1fr)
-            *#title*
+            #if title-in-header [
+              #emph(title)
+            ]
             #v(0.4em)
           ]]
       }
