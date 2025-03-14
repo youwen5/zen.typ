@@ -267,11 +267,6 @@
   ..builderargs,
 )
 
-#let problem-style = builder-thmbox(
-  color: colors.at(11),
-  shadow: (offset: (x: 2pt, y: 2pt), color: luma(70%)),
-)
-
 
 #let theorem-style = builder-thmbox(
   color: colors.at(6),
@@ -279,25 +274,28 @@
 )
 
 #let example-style = builder-thmbox(
-  color: colors.at(16),
+  color: colors.at(17),
   shadow: (offset: (x: 3pt, y: 3pt), color: luma(70%)),
 )
+
 
 #let theorem = theorem-style("item", "Theorem")
 #let lemma = theorem-style("item", "Lemma")
 #let corollary = theorem-style("item", "Corollary")
-
-#let problem = problem-style("item", "Problem")
-#let definition-style = builder-thmline(color: colors.at(8))
-
-// #let definition = definition-style("definition", "Definition")
-#let proposition = definition-style("item", "Proposition")
-#let remark = definition-style("item", "Remark")
-#let observation = definition-style("item", "Observation")
-
-// #let example-style = builder-thmline(color: colors.at(16))
-
 #let example = example-style("item", "Example")
+
+#let proposition-style = builder-thmline(color: colors.at(8))
+#let remark-style = builder-thmline(color: colors.at(0))
+#let problem-style = builder-thmline(color: colors.at(4))
+
+#let exercise-style = builder-thmline(color: colors.at(11))
+
+#let proposition = proposition-style("item", "Proposition")
+#let remark = remark-style("item", "Remark")
+#let observation = remark-style("item", "Observation")
+#let exercise = exercise-style("item", "Exercise")
+#let problem = problem-style("item", "Problem")
+
 
 #let proof(body, name: none) = {
   v(0.5em)
@@ -348,15 +346,6 @@
   inset: 0pt,
   padding: (bottom: 0.5em, top: 0.5em),
 )
-#let exercise = thmplain(
-  "item",
-  "Exercise",
-  titlefmt: content => [*#content.*],
-  namefmt: content => [_(#content)._],
-  separator: [],
-  inset: 0pt,
-  padding: (bottom: 0.5em, top: 0.5em),
-)
 
 #let solution = (..args) => showybox(
   title-style: (
@@ -368,6 +357,7 @@
     title-color: colors.at(0).lighten(80%),
     border-color: colors.at(0).darken(40%),
     thickness: (left: 1.5pt),
+    breakable: true,
     radius: 0pt,
   ),
   title: (
