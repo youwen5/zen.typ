@@ -355,6 +355,7 @@
 )
 
 #let solution = (..args) => showybox(
+  breakable: true,
   title-style: (
     weight: "semibold",
     color: colors.at(0).darken(40%),
@@ -364,7 +365,6 @@
     title-color: colors.at(0).lighten(80%),
     border-color: colors.at(0).darken(40%),
     thickness: (left: 1.5pt),
-    breakable: true,
     radius: 0pt,
   ),
   title: (
