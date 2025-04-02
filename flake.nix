@@ -23,7 +23,7 @@
               inherit (builtins) toString;
               versionStr = "${toString major}.${toString minor}.${toString patch}";
             in
-            if (minor <= 1) then
+            if (minor > 1) then
               (generateAllVersions {
                 inherit patch major;
                 minor = minor - 1;
@@ -36,7 +36,7 @@
 
           generateTypstToml =
             version:
-            builtins.toFile "typst.toml" ''
+            builtins.toFile "typst.toml-${version}" ''
               [package]
               name = "zen"
               version = "${version}"
@@ -45,9 +45,8 @@
               license = "MIT"
               description = "Blingful Typst template with swag"
             '';
-          mergeSets = attr1: attr2: attr1 // attr2;
           installPath = ".cache/typst/packages/youwen/zen";
-          installPaths = builtins.foldl' mergeSets { } (
+          installPaths = lib.attrsets.mergeAttrsList (
             builtins.map (versionStr: {
               "${installPath}/${versionStr}/zen.typ".source = ./typst/zen.typ;
               "${installPath}/${versionStr}/typst.toml".source = generateTypstToml versionStr;
