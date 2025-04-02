@@ -49,7 +49,7 @@
           installPath = ".cache/typst/packages/youwen/zen";
           installPaths = builtins.foldl' mergeSets { } (
             builtins.map (versionStr: {
-              "${installPath}/${versionStr}/zen.typ".source = ./typst/main.typ;
+              "${installPath}/${versionStr}/zen.typ".source = ./typst/zen.typ;
               "${installPath}/${versionStr}/typst.toml".source = generateTypstToml versionStr;
               "${installPath}/${versionStr}/template/main.typ".source = ./typst/template/main.typ;
             }) versions
