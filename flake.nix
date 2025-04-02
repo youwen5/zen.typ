@@ -19,14 +19,18 @@
               minor,
               patch,
             }:
+            let
+              inherit (builtins) toString;
+              versionStr = "${toString major}.${toString minor}.${toString patch}";
+            in
             if (minor <= 1) then
               (generateAllVersions {
                 inherit patch major;
                 minor = minor - 1;
               })
-              ++ [ "${major}.${minor}.${patch}" ]
+              ++ [ versionStr ]
             else
-              [ "${major}.${minor}.${patch}" ];
+              [ versionStr ];
 
           versions = generateAllVersions semVer;
 
