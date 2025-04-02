@@ -19,7 +19,6 @@
               minor,
               patch,
             }:
-            versions:
             if (minor <= 1) then
               (generateAllVersions {
                 inherit patch major;
