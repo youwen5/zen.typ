@@ -286,15 +286,18 @@
 )
 
 
+
 #let theorem = theorem-style("item", "Theorem")
 #let lemma = theorem-style("item", "Lemma")
 #let corollary = theorem-style("item", "Corollary")
 #let example = example-style("item", "Example")
 
+
+
 #let proposition-style = builder-thmline(color: colors.at(8))
 #let remark-style = builder-thmline(color: colors.at(0))
 #let problem-style = builder-thmline(color: colors.at(4))
-
+#let recipe-style = builder-thmline(color: colors.at(17))
 #let exercise-style = builder-thmline(color: colors.at(11))
 
 #let proposition = proposition-style("item", "Proposition")
@@ -302,6 +305,7 @@
 #let observation = remark-style("item", "Observation")
 #let exercise = exercise-style("item", "Exercise")
 #let problem = problem-style("item", "Problem")
+#let recipe = recipe-style("item", "Recipe")
 
 
 #let proof(body, name: none) = {
@@ -353,6 +357,15 @@
   inset: 0pt,
   padding: (bottom: 0.5em, top: 0.5em),
 )
+#let axiom = thmplain(
+  "item",
+  "Axiom",
+  titlefmt: content => [*#content.*],
+  namefmt: content => [(#emph(content)).],
+  separator: [],
+  inset: 0pt,
+  padding: (bottom: 0.5em, top: 0.5em),
+)
 
 #let solution = (..args) => showybox(
   breakable: true,
@@ -382,3 +395,26 @@
     args.at(0)
   }
 ]
+
+#let numbered-figure = (caption: none, ..opts) => {
+  let base = thmenv(
+    "item",
+    "heading",
+    none,
+    (name, number, body, color: black) => {
+      show figure.caption: it => [
+        Figure #number#if (caption != none) [: #it.body]
+      ]
+      pad(
+        y: 5pt,
+        figure(
+          body,
+          numbering: none,
+          caption: if caption == none { "" } else { caption },
+        ),
+      )
+    },
+  ).with(supplement: "Figure")
+  base(..opts)
+}
+
