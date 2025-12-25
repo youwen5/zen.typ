@@ -10,7 +10,7 @@
           cfg = config.zenTyp;
           semVer = {
             major = 0;
-            minor = 5;
+            minor = 6;
             patch = 0;
           };
           generateAllVersions =

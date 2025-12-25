@@ -27,6 +27,7 @@
   sans: "Liberation Sans",
   mono: "CaskaydiaCove Nerd Font",
   serif: "New Computer Modern",
+  display: "Libertinus Serif",
 )
 
 #let zen(
@@ -55,16 +56,16 @@
     header: context {
       if counter(page).get().first() > 1 {
         box(stroke: (bottom: 0.7pt))[#text(font: fonts.serif)[
-            *#author*
-            #if date-in-header [
-              --- #datetime.today().display("[day] [month repr:long] [year]")
-            ]
-            #h(1fr)
-            #if title-in-header [
-              #emph(title)
-            ]
-            #v(0.4em)
-          ]]
+          *#author*
+          #if date-in-header [
+            --- #datetime.today().display("[day] [month repr:long] [year]")
+          ]
+          #h(1fr)
+          #if title-in-header [
+            #emph(title)
+          ]
+          #v(0.4em)
+        ]]
       }
     },
     paper: paper-size,
@@ -78,7 +79,7 @@
 
   set heading(numbering: "1.1")
   show heading: it => {
-    set text(font: fonts.sans)
+    set text(font: fonts.display)
 
     block[
       #if it.numbering != none {
@@ -98,12 +99,12 @@
 
   // Title row.
   align(center)[
-    #block(text(weight: 700, font: fonts.sans, 26pt, title))
+    #block(text(weight: 700, font: fonts.display, 26pt, title))
 
 
-    #if subtitle != none [#text(12pt, weight: 500, font: fonts.sans)[#(
-          subtitle
-        )]]
+    #if subtitle != none [#text(12pt, weight: 500, font: fonts.display)[#(
+      subtitle
+    )]]
 
     #v(0.8em)
     #if author != none [#text(16pt)[#smallcaps(author)]]
@@ -383,7 +384,7 @@
   title: (
     () => {
       if (args.pos().len() > 1) {
-        return [Solution#text(weight: "medium",[ (#args.at(0))])]
+        return [Solution#text(weight: "medium", [ (#args.at(0))])]
       }
       "Solution"
     }
